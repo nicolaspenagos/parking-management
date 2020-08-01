@@ -5,9 +5,10 @@
 */
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Logic {
+public class Logic implements Serializable{
 
 	// -------------------------------------
 	// Atributtes
@@ -19,10 +20,10 @@ public class Logic {
 	// -------------------------------------
 	// Constructor
 	// -------------------------------------
-	public Logic() {
+	public Logic(String adminName, String password) {
 	
-		admin = new User("Carlos Penagos ADMINISTRADOR");
-		password = "Terrasol123";
+		admin = new User(adminName);
+		this.password = password;
 		workers = new ArrayList<User>();
 		
 	}
