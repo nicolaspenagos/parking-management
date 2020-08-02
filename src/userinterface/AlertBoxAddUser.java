@@ -80,6 +80,17 @@ public class AlertBoxAddUser {
 				}
 			}
 		});
+		
+		save.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				
+				if(!name.getText().equals("") && name.getText().length() > 1) {
+					mc.createUser(name.getText());
+				}else {
+					
+				}
+			}
+		});
 
 		layout.getChildren().addAll(image, Lb1, Lb2, space1 ,passwordTxtField,  passwordButton);
 		layout.setAlignment(Pos.CENTER);

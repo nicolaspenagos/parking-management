@@ -10,6 +10,11 @@ import java.util.ArrayList;
 
 public class Logic implements Serializable{
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// -------------------------------------
 	// Atributtes
 	// -------------------------------------
@@ -22,7 +27,7 @@ public class Logic implements Serializable{
 	// -------------------------------------
 	public Logic(String adminName, String password) {
 	
-		admin = new User(adminName);
+		admin = new User(adminName + " ADMIN");
 		this.password = password;
 		workers = new ArrayList<User>();
 		
@@ -32,6 +37,12 @@ public class Logic implements Serializable{
 	// Methods
 	// -------------------------------------
 
+	public void addUser(String name) {
+		
+		User current = new User(name);
+		workers.add(current);
+		
+	}
 	// -------------------------------------
 	// Getters and Setters
 	// -------------------------------------
