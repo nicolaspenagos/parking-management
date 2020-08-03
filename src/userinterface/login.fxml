@@ -3,6 +3,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -48,7 +51,7 @@
       <TextField fx:id="nameTxtField" layoutX="510.0" layoutY="356.0" prefHeight="25.0" prefWidth="193.0" />
       <Label fx:id="errorLb" layoutX="346.0" layoutY="464.0" text="* Las contraseñas deben ser iguales para continuar  *" textFill="RED" />
       <Label fx:id="emptyErrorLb" layoutX="389.0" layoutY="464.0" text="* Ningún campo puede estar vacío  *" textFill="RED" />
-      <Pane fx:id="sepPane" layoutX="-4.0" layoutY="133.0" prefHeight="5.0" prefWidth="958.0" style="-fx-background-color: WHITE;" />
+      <Pane fx:id="sepPane" layoutX="-4.0" layoutY="170.0" prefHeight="5.0" prefWidth="958.0" style="-fx-background-color: WHITE;" />
       <Label fx:id="userLb" layoutX="330.0" layoutY="351.0" text="Por favor seleccione su usuario:">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -60,17 +63,37 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="addUserButton" layoutX="837.0" layoutY="160.0" mnemonicParsing="false" onAction="#addUser" text="Add User" />
+      <Button fx:id="addUserButton" layoutX="837.0" layoutY="197.0" mnemonicParsing="false" onAction="#addUser" text="Add User" />
       <Label fx:id="emptyUserErrorLb" layoutX="347.0" layoutY="464.0" text="* Seleccione un usuario para continuar *" textFill="RED" />
-      <Pane fx:id="sepPane1111" layoutX="158.0" layoutY="139.0" prefHeight="83.0" prefWidth="624.0" style="-fx-background-color: SNOW;" />
-      <Label fx:id="timeLb" layoutX="218.0" layoutY="107.0" prefHeight="143.0" prefWidth="520.0" text="2020/11/12   17:53:23" textFill="#0c1f57">
+      <Pane fx:id="sepPane1111" layoutX="158.0" layoutY="176.0" prefHeight="83.0" prefWidth="624.0" style="-fx-background-color: SNOW;" />
+      <Label fx:id="timeLb" layoutX="218.0" layoutY="144.0" prefHeight="143.0" prefWidth="520.0" text="2020/11/12   17:53:23" textFill="#0c1f57">
          <font>
             <Font name="System Italic" size="54.0" />
          </font>
       </Label>
-      <Pane fx:id="sepPane1" layoutX="2.0" layoutY="218.0" prefHeight="5.0" prefWidth="958.0" style="-fx-background-color: WHITE;" />
-      <Pane fx:id="sepPane11" layoutX="154.0" layoutY="133.0" prefHeight="90.0" prefWidth="5.0" style="-fx-background-color: WHITE;" />
-      <Pane fx:id="sepPane111" layoutX="780.0" layoutY="133.0" prefHeight="90.0" prefWidth="5.0" style="-fx-background-color: WHITE;" />
-      <Button fx:id="exitButton" layoutX="14.0" layoutY="144.0" mnemonicParsing="false" />
+      <Pane fx:id="sepPane1" layoutX="2.0" layoutY="255.0" prefHeight="5.0" prefWidth="958.0" style="-fx-background-color: WHITE;" />
+      <Pane fx:id="sepPane11" layoutX="154.0" layoutY="170.0" prefHeight="90.0" prefWidth="5.0" style="-fx-background-color: WHITE;" />
+      <Pane fx:id="sepPane111" layoutX="780.0" layoutY="170.0" prefHeight="90.0" prefWidth="5.0" style="-fx-background-color: WHITE;" />
+      <Button fx:id="exitButton" layoutX="14.0" layoutY="181.0" mnemonicParsing="false" />
+      <Pane fx:id="sepPane11111" layoutY="31.0" prefHeight="5.0" prefWidth="958.0" style="-fx-background-color: WHITE;" />
+      <MenuBar fx:id="menubar" layoutX="-5.0" prefHeight="25.0" prefWidth="958.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Opciones">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#addUserMenuBar" text="Añadir Usuario" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Data">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </Pane>

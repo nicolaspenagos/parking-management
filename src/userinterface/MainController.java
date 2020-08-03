@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -98,10 +99,15 @@ public class MainController {
     @FXML
     private Pane sepPane111;
     
-
     @FXML
     private Pane sepPane1111;
-
+    
+    @FXML
+    private Pane sepPane11111;
+    
+    @FXML
+    private MenuBar menubar;
+    
 	private Logic logic;
 	private AlertBoxAddUser addUserWindow;
 	private String date;
@@ -117,6 +123,9 @@ public class MainController {
 		timeLb.setText("");
 		exitButton.setVisible(false);
 		exitButton.setGraphic(new ImageView(new Image("/images/exit-01.png")));
+		
+		String style = "-fx-font-weight: bold; -fx-background-color: SNOW;";
+		menubar.setStyle(style);
 		
 		sepPane1.setVisible(false);
 		sepPane11.setVisible(false);
@@ -186,7 +195,7 @@ public class MainController {
         	enterButton.setVisible(false);
         	emptyUserErrorLb.setVisible(false);
         	addUserButton.setVisible(true);
-        	title.setLayoutY(14.0);
+        	title.setLayoutY(43.0);
         	sepPane.setVisible(true);
         	timeLb.setVisible(true);
         	exitButton.setVisible(true);
@@ -195,6 +204,7 @@ public class MainController {
 			sepPane11.setVisible(true);
 			sepPane111.setVisible(true);
 			sepPane1111.setVisible(true);
+			sepPane11111.setVisible(true);
         	
     	}else {
     		
@@ -272,6 +282,11 @@ public class MainController {
 		}
 
 	}
+	
+    @FXML
+    void addUserMenuBar(ActionEvent event) {
+    	addUserWindow.display(this);
+    }
 
 	public void saveData() {
 
@@ -293,7 +308,7 @@ public class MainController {
 	
 	@FXML
     void addUser(ActionEvent event) {
-		addUserWindow.display(this);
+		//addUserWindow.display(this);
     }
 	
 	public void createUser(String name) {
