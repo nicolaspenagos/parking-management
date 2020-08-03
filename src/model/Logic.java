@@ -20,6 +20,7 @@ public class Logic implements Serializable{
 	// -------------------------------------
 	private User admin;
 	private String password;
+	private User currentUser;
 	private ArrayList<User> workers;
 
 	// -------------------------------------
@@ -36,13 +37,30 @@ public class Logic implements Serializable{
 	// -------------------------------------
 	// Methods
 	// -------------------------------------
-
 	public void addUser(String name) {
 		
 		User current = new User(name);
 		workers.add(current);
 		
 	}
+	
+	public User searchUser(String name) {
+		
+		
+		if(name.equalsIgnoreCase(admin.getName())) {
+			return admin;
+		}
+		
+		for (int i = 0; i < workers.size(); i++) {
+			if(workers.get(i).getName().equalsIgnoreCase(name)) {
+				return workers.get(i);
+			}
+		}
+		
+		return null;
+	}
+	
+	
 	// -------------------------------------
 	// Getters and Setters
 	// -------------------------------------
@@ -68,6 +86,14 @@ public class Logic implements Serializable{
 
 	public void setWorkers(ArrayList<User> workers) {
 		this.workers = workers;
+	}
+
+	public User getCurrentUser() {
+		return currentUser;
+	}
+
+	public void setCurrentUser(User currentUser) {
+		this.currentUser = currentUser;
 	}
 
 }

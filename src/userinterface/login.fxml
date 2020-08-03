@@ -8,6 +8,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -63,7 +64,6 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="addUserButton" layoutX="837.0" layoutY="197.0" mnemonicParsing="false" onAction="#addUser" text="Add User" />
       <Label fx:id="emptyUserErrorLb" layoutX="347.0" layoutY="464.0" text="* Seleccione un usuario para continuar *" textFill="RED" />
       <Pane fx:id="sepPane1111" layoutX="158.0" layoutY="176.0" prefHeight="83.0" prefWidth="624.0" style="-fx-background-color: SNOW;" />
       <Label fx:id="timeLb" layoutX="218.0" layoutY="144.0" prefHeight="143.0" prefWidth="520.0" text="2020/11/12   17:53:23" textFill="#0c1f57">
@@ -74,13 +74,13 @@
       <Pane fx:id="sepPane1" layoutX="2.0" layoutY="255.0" prefHeight="5.0" prefWidth="958.0" style="-fx-background-color: WHITE;" />
       <Pane fx:id="sepPane11" layoutX="154.0" layoutY="170.0" prefHeight="90.0" prefWidth="5.0" style="-fx-background-color: WHITE;" />
       <Pane fx:id="sepPane111" layoutX="780.0" layoutY="170.0" prefHeight="90.0" prefWidth="5.0" style="-fx-background-color: WHITE;" />
-      <Button fx:id="exitButton" layoutX="14.0" layoutY="181.0" mnemonicParsing="false" />
+      <Button fx:id="exitButton" layoutX="14.0" layoutY="181.0" mnemonicParsing="false" onAction="#exit" />
       <Pane fx:id="sepPane11111" layoutY="31.0" prefHeight="5.0" prefWidth="958.0" style="-fx-background-color: WHITE;" />
       <MenuBar fx:id="menubar" layoutX="-5.0" prefHeight="25.0" prefWidth="958.0">
         <menus>
           <Menu mnemonicParsing="false" text="Opciones">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#addUserMenuBar" text="Añadir Usuario" />
+              <MenuItem fx:id="addUserMenuBar" mnemonicParsing="false" onAction="#addUserMenuBar" text="Añadir Usuario" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Data">
@@ -95,5 +95,28 @@
           </Menu>
         </menus>
       </MenuBar>
+      <Label fx:id="currentUserLb" layoutX="367.0" layoutY="267.0" text="NICOLAS PENAGOS MONTOYA" textFill="#0c1f57">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Pane fx:id="sepPane111111" layoutX="1.0" layoutY="297.0" prefHeight="5.0" prefWidth="958.0" style="-fx-background-color: WHITE;" />
+      <Button fx:id="reportButton" layoutX="797.0" layoutY="181.0" mnemonicParsing="false" />
+      <Button fx:id="enterVehicleButton" layoutX="290.0" layoutY="325.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="376.0" text="INGRESAR VEHÍCULO">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+         <effect>
+            <InnerShadow color="#b1f5a3" />
+         </effect>
+      </Button>
+      <Button fx:id="removeVehicleButton" layoutX="287.0" layoutY="408.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="376.0" text="RETIRAR VEHÍCULO">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+         <effect>
+            <InnerShadow color="#f5b9a4" />
+         </effect>
+      </Button>
    </children>
 </Pane>

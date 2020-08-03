@@ -76,6 +76,7 @@ public class AlertBoxAddUser {
 					String style = "-fx-font-size: 12pt; -fx-text-fill: RED;";
 					space1.setStyle(style);
 					space1.setText("* Contraseña incorrecta *");
+					passwordTxtField.setText("");
 					
 				}
 			}
@@ -85,7 +86,10 @@ public class AlertBoxAddUser {
 			public void handle(ActionEvent e) {
 				
 				if(!name.getText().equals("") && name.getText().length() > 1) {
+					
 					mc.createUser(name.getText());
+					window.close();
+					
 				}else {
 					
 				}
