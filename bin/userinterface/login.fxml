@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -95,22 +97,25 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Label fx:id="currentUserLb" layoutX="367.0" layoutY="267.0" text="NICOLAS PENAGOS MONTOYA" textFill="#0c1f57">
-         <font>
-            <Font name="System Bold Italic" size="16.0" />
-         </font>
-      </Label>
-      <Pane fx:id="sepPane111111" layoutX="1.0" layoutY="297.0" prefHeight="5.0" prefWidth="958.0" style="-fx-background-color: WHITE;" />
-      <Button fx:id="reportButton" layoutX="797.0" layoutY="181.0" mnemonicParsing="false" />
-      <Button fx:id="enterVehicleButton" layoutX="290.0" layoutY="325.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="376.0" text="INGRESAR VEHÍCULO">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-         <effect>
-            <InnerShadow color="#b1f5a3" />
-         </effect>
-      </Button>
-      <Button fx:id="removeVehicleButton" layoutX="287.0" layoutY="408.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="376.0" text="RETIRAR VEHÍCULO">
+      <Pane fx:id="sepPane4" layoutX="159.0" layoutY="301.0" prefHeight="382.0" prefWidth="624.0" style="-fx-background-color: SNOW;">
+         <children>
+            <Button fx:id="cancelButton" layoutX="179.0" layoutY="280.0" mnemonicParsing="false" onAction="#cancel" prefHeight="38.0" prefWidth="126.0" text="CANCELAR">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <effect>
+                  <InnerShadow color="#ff7c7c" />
+               </effect></Button>
+            <Button fx:id="confirmButton" layoutX="328.0" layoutY="280.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="126.0" text="CONFIRMAR">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <effect>
+                  <InnerShadow color="#79ff80" />
+               </effect></Button>
+         </children>
+      </Pane>
+      <Button fx:id="removeVehicleButton" layoutX="287.0" layoutY="448.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="376.0" text="RETIRAR VEHÍCULO">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
@@ -118,5 +123,67 @@
             <InnerShadow color="#f5b9a4" />
          </effect>
       </Button>
+      <Pane fx:id="sepPane3" layoutX="779.0" layoutY="303.0" prefHeight="382.0" prefWidth="5.0" style="-fx-background-color: WHITE;" />
+      <Pane fx:id="sepPane2" layoutX="156.0" layoutY="300.0" prefHeight="382.0" prefWidth="5.0" style="-fx-background-color: WHITE;" />
+      <Label fx:id="currentUserLb" layoutX="367.0" layoutY="267.0" text="NICOLAS PENAGOS MONTOYA" textFill="#0c1f57">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Pane fx:id="sepPane111111" layoutX="1.0" layoutY="297.0" prefHeight="5.0" prefWidth="958.0" style="-fx-background-color: WHITE;" />
+      <Button fx:id="reportButton" layoutX="797.0" layoutY="181.0" mnemonicParsing="false" />
+      <Button fx:id="enterVehicleButton" layoutX="290.0" layoutY="342.0" mnemonicParsing="false" onAction="#registerVehicle" prefHeight="68.0" prefWidth="376.0" text="   INGRESAR VEHÍCULO">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+         <effect>
+            <InnerShadow color="#b1f5a3" />
+         </effect>
+      </Button>
+      <Label fx:id="ivLb4" layoutX="301.0" layoutY="447.0" text="PLACA:">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="p1" layoutX="415.0" layoutY="449.0" prefHeight="45.0" prefWidth="32.0" />
+      <Label fx:id="ivLb6" layoutX="529.0" layoutY="447.0" text="-">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="p2" layoutX="453.0" layoutY="448.0" prefHeight="45.0" prefWidth="32.0" />
+      <TextField fx:id="p3" layoutX="491.0" layoutY="448.0" prefHeight="45.0" prefWidth="32.0" />
+      <TextField fx:id="p4" layoutX="548.0" layoutY="450.0" prefHeight="45.0" prefWidth="32.0" />
+      <TextField fx:id="p5" layoutX="586.0" layoutY="449.0" prefHeight="45.0" prefWidth="32.0" />
+      <TextField fx:id="p6" layoutX="624.0" layoutY="449.0" prefHeight="45.0" prefWidth="32.0" />
+      <ComboBox fx:id="type" layoutX="415.0" layoutY="510.0" prefHeight="32.0" prefWidth="242.0">
+      <items>
+      <FXCollections fx:factory="observableArrayList">
+      <String fx:value="TURBO" />
+      <String fx:value="MULA" />
+      <String fx:value="AUTOMÓVIL" />
+      </FXCollections>
+      </items>
+      </ComboBox>
+      <Label fx:id="ivLb5" layoutX="299.0" layoutY="503.0" text="TIPO:">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="ivLb1" layoutX="219.0" layoutY="339.0" text="Por favor registre los siguientes datos para ingresar un vehículo, ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="ivLb2" layoutX="220.0" layoutY="365.0" text="verifique que los datos ingresados son correctos antes de dar ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="ivLb3" layoutX="219.0" layoutY="394.0" text="dar al botón confirmar.">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

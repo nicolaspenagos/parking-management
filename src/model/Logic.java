@@ -7,6 +7,9 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+
+
 
 public class Logic implements Serializable{
 
@@ -22,6 +25,8 @@ public class Logic implements Serializable{
 	private String password;
 	private User currentUser;
 	private ArrayList<User> workers;
+	private ArrayList<Register> registers;
+	private int idCounter;
 
 	// -------------------------------------
 	// Constructor
@@ -31,6 +36,8 @@ public class Logic implements Serializable{
 		admin = new User(adminName + " ADMIN");
 		this.password = password;
 		workers = new ArrayList<User>();
+		registers = new ArrayList<Register>();
+		idCounter = 1000;
 		
 	}
 
@@ -43,6 +50,18 @@ public class Logic implements Serializable{
 		workers.add(current);
 		
 	}
+	
+	public void AddVehicle(Calendar date) {
+		
+		
+		//Register current = new Register(idCounter);
+		//registers.add(new Register)
+		
+		idCounter++;
+	}
+	
+
+   
 	
 	public User searchUser(String name) {
 		

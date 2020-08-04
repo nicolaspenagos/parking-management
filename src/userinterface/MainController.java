@@ -51,8 +51,8 @@ public class MainController {
 	@FXML
 	private Label lb4;
 
-    @FXML
-    private Label timeLb;
+	@FXML
+	private Label timeLb;
 
 	@FXML
 	private PasswordField password1TxtField;
@@ -65,19 +65,25 @@ public class MainController {
 
 	@FXML
 	private Button saveButton;
+	
+
+    @FXML
+    private Button cancelButton;
+
+    @FXML
+    private Button confirmButton;
 
 	@FXML
 	private Label errorLb;
 
 	@FXML
 	private Label emptyErrorLb;
-	
 
-    @FXML
-    private Label emptyUserErrorLb;
-    
-    @FXML
-    private Label currentUserLb;
+	@FXML
+	private Label emptyUserErrorLb;
+
+	@FXML
+	private Label currentUserLb;
 
 	@FXML
 	private Label userLb;
@@ -87,44 +93,91 @@ public class MainController {
 
 	@FXML
 	private Button enterButton;
+
+	@FXML
+	private Button reportButton;
+
+	@FXML
+	private Button exitButton;
+
+	@FXML
+	private Button enterVehicleButton;
+
+	@FXML
+	private Button removeVehicleButton;
+
+	@FXML
+	private Pane sepPane1;
+
+	@FXML
+	private Pane sepPane11;
+
+	@FXML
+	private Pane sepPane111;
+
+	@FXML
+	private Pane sepPane1111;
+
+	@FXML
+	private Pane sepPane11111;
+
+	@FXML
+	private Pane sepPane111111;
+
+	@FXML
+	private Pane sepPane2;
+
+	@FXML
+	private Pane sepPane3;
+
+	@FXML
+	private Pane sepPane4;
+
+	@FXML
+	private MenuItem addUserMenuBar;
 	
     @FXML
-    private Button reportButton;
-    
-    @FXML
-    private Button exitButton;
-    
-    @FXML
-    private Button enterVehicleButton;
+    private Label ivLb4;
 
     @FXML
-    private Button removeVehicleButton;
-
-    
-    @FXML
-    private Pane sepPane1;
+    private TextField p1;
 
     @FXML
-    private Pane sepPane11;
+    private Label ivLb6;
 
     @FXML
-    private Pane sepPane111;
-    
+    private TextField p2;
+
     @FXML
-    private Pane sepPane1111;
-    
+    private TextField p3;
+
     @FXML
-    private Pane sepPane11111;
-    
+    private TextField p4;
+
     @FXML
-    private Pane sepPane111111;
-    
+    private TextField p5;
+
     @FXML
-    private MenuItem addUserMenuBar;
-    
+    private TextField p6;
+
     @FXML
-    private MenuBar menubar;
-    
+    private ComboBox<String> type;
+
+    @FXML
+    private Label ivLb5;
+
+    @FXML
+    private Label ivLb1;
+
+    @FXML
+    private Label ivLb2;
+
+    @FXML
+    private Label ivLb3;
+
+	@FXML
+	private MenuBar menubar;
+
 	private Logic logic;
 	private AlertBoxAddUser addUserWindow;
 	private String date;
@@ -142,29 +195,56 @@ public class MainController {
 		exitButton.setVisible(false);
 		exitButton.setGraphic(new ImageView(new Image("/images/exit-01.png")));
 		reportButton.setGraphic(new ImageView(new Image("/images/report.png")));
-		
-		
+		enterVehicleButton.setGraphic(new ImageView(new Image("/images/enterV.png")));
+		removeVehicleButton.setGraphic(new ImageView(new Image("/images/exitV-01.png")));
+
+		sepPane2.setVisible(false);
+		sepPane3.setVisible(false);
+		sepPane4.setVisible(false);
+
 		enterVehicleButton.setVisible(false);
 		removeVehicleButton.setVisible(false);
 		
+		//cancelButton.setGraphic(new ImageView(new Image("/images/cancel-01.png")));
+		cancelButton.setVisible(false);
+		//confirmButton.setGraphic(new ImageView(new Image("/images/confirm-01.png")));
+		confirmButton.setVisible(false);
+
 		addUserMenuBar.setDisable(true);
-		
+
 		String style = "-fx-font-weight: bold; -fx-background-color: SNOW;";
 		menubar.setStyle(style);
-		
+
 		sepPane1.setVisible(false);
 		sepPane11.setVisible(false);
 		sepPane111.setVisible(false);
 		sepPane1111.setVisible(false);
 		sepPane111111.setVisible(false);
 		
-		GUIUpdateControllThread guiThread = new GUIUpdateControllThread(this); 
-    	guiThread.setDaemon(true);
-    	guiThread.start();
-    	
-    	TimeThread timeThread = new TimeThread(this);
-    	timeThread.setDaemon(true);
-    	timeThread.start();
+		p1.setVisible(false);
+		p2.setVisible(false);
+		p3.setVisible(false);
+		p4.setVisible(false);
+		p5.setVisible(false);
+		p6.setVisible(false);
+		
+		ivLb1.setVisible(false);
+		ivLb2.setVisible(false);
+		ivLb3.setVisible(false);
+		ivLb4.setVisible(false);
+		ivLb5.setVisible(false);
+		ivLb6.setVisible(false);
+	
+		type.setVisible(false);
+	
+
+		GUIUpdateControllThread guiThread = new GUIUpdateControllThread(this);
+		guiThread.setDaemon(true);
+		guiThread.start();
+
+		TimeThread timeThread = new TimeThread(this);
+		timeThread.setDaemon(true);
+		timeThread.start();
 
 		userComboBox.setVisible(false);
 		enterButton.setVisible(false);
@@ -182,74 +262,73 @@ public class MainController {
 			password2TxtField.setVisible(false);
 			nameTxtField.setVisible(false);
 			saveButton.setVisible(false);
-			
+
 			addUserMenuBar.setDisable(false);
 
 			userComboBox.setVisible(true);
 			enterButton.setVisible(true);
 			userLb.setVisible(true);
-			
+
 			loadData();
 			updateComboBox();
-			
+
 		}
-		
+
 		addUserWindow = new AlertBoxAddUser();
-	
 
 	}
-	
+
 	public void update() {
 		timeLb.setText(date);
 	}
-	
+
 	public void updateTime() {
-		
+
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Calendar cal = Calendar.getInstance();
 		date = dateFormat.format(cal.getTime());
-		
-		
-	}
-	
 
-    @FXML
-    void enter(ActionEvent event) {
-    	
-    	if(userComboBox.getValue()!=null) {
-    		
-    		logic.setCurrentUser(logic.searchUser(userComboBox.getValue()));
-    		currentUserLb.setText("RESPONSABLE:  "+logic.getCurrentUser().getName().toUpperCase());
-    		
-    		userLb.setVisible(false);
-        	userComboBox.setVisible(false);
-        	enterButton.setVisible(false);
-        	emptyUserErrorLb.setVisible(false);
-        	reportButton.setVisible(true);
-        	title.setLayoutY(43.0);
-        	sepPane.setVisible(true);
-        	timeLb.setVisible(true);
-        	exitButton.setVisible(true);
-        	currentUserLb.setVisible(true);
-        	
-        	sepPane1.setVisible(true);
+	}
+
+	@FXML
+	void enter(ActionEvent event) {
+
+		if (userComboBox.getValue() != null) {
+
+			logic.setCurrentUser(logic.searchUser(userComboBox.getValue()));
+			currentUserLb.setText("RESPONSABLE:  " + logic.getCurrentUser().getName().toUpperCase());
+
+			userLb.setVisible(false);
+			userComboBox.setVisible(false);
+			enterButton.setVisible(false);
+			emptyUserErrorLb.setVisible(false);
+			reportButton.setVisible(true);
+			title.setLayoutY(43.0);
+			sepPane.setVisible(true);
+			timeLb.setVisible(true);
+			exitButton.setVisible(true);
+			currentUserLb.setVisible(true);
+
+			sepPane1.setVisible(true);
 			sepPane11.setVisible(true);
 			sepPane111.setVisible(true);
 			sepPane1111.setVisible(true);
 			sepPane11111.setVisible(true);
 			sepPane111111.setVisible(true);
-			
+
+			sepPane2.setVisible(true);
+			sepPane3.setVisible(true);
+			sepPane4.setVisible(true);
 
 			enterVehicleButton.setVisible(true);
 			removeVehicleButton.setVisible(true);
-        	
-    	}else {
-    		
-    		emptyUserErrorLb.setVisible(true);
-    	}
-    	
-    	
-    }
+
+		} else {
+
+			emptyUserErrorLb.setVisible(true);
+		}
+
+	}
 
 	@FXML
 	void save(ActionEvent event) {
@@ -278,28 +357,32 @@ public class MainController {
 				nameTxtField.setVisible(false);
 				saveButton.setVisible(false);
 				title.setLayoutY(43.0);
-				
+
 				timeLb.setVisible(true);
-				
+
 				sepPane1.setVisible(true);
 				sepPane11.setVisible(true);
 				sepPane111.setVisible(true);
 				sepPane1111.setVisible(true);
 				sepPane11111.setVisible(true);
 				sepPane111111.setVisible(true);
-				
+
+				sepPane2.setVisible(true);
+				sepPane3.setVisible(true);
+				sepPane4.setVisible(true);
+
 				enterVehicleButton.setVisible(true);
 				removeVehicleButton.setVisible(true);
-				
+
 				exitButton.setVisible(true);
-	        	currentUserLb.setVisible(true);
-	        	currentUserLb.setText(logic.getAdmin().getName());
+				currentUserLb.setVisible(true);
+				currentUserLb.setText(logic.getAdmin().getName());
 
 				sepPane.setVisible(true);
 				reportButton.setVisible(true);
-				
+
 				addUserMenuBar.setDisable(false);
-				
+
 				updateComboBox();
 
 			} else {
@@ -337,11 +420,11 @@ public class MainController {
 		}
 
 	}
-	
-    @FXML
-    void addUserMenuBar(ActionEvent event) {
-    	addUserWindow.display(this);
-    }
+
+	@FXML
+	void addUserMenuBar(ActionEvent event) {
+		addUserWindow.display(this);
+	}
 
 	public void saveData() {
 
@@ -360,53 +443,78 @@ public class MainController {
 		}
 
 	}
-	
+
 	@FXML
-    void addUser(ActionEvent event) {
-		//addUserWindow.display(this);
-    }
-	
+	void addUser(ActionEvent event) {
+		// addUserWindow.display(this);
+	}
+
 	public void createUser(String name) {
-		
+
 		logic.addUser(name);
 		saveData();
 		updateComboBox();
-		
+
 	}
-	
+
 	public Logic getLogic() {
 		return logic;
 	}
-	
+
 	public void updateComboBox() {
-		
-	
+
 		ArrayList<User> users = logic.getWorkers();
-		
+
 		List<String> namesList = new ArrayList<String>();
-		
+
 		String admin = logic.getAdmin().getName().toUpperCase();
 		namesList.add(admin);
-		
+
 		for (int i = 0; i < users.size(); i++) {
 			namesList.add(users.get(i).getName().toUpperCase());
 		}
-		
+
 		userComboBox.setItems(FXCollections.observableArrayList(namesList));
-		
-		
+
 	}
-	
-    @FXML
-    void exit(ActionEvent event) {
-    	
-    	userLb.setVisible(true);
-    	userComboBox.setVisible(true);
-    	enterButton.setVisible(true);
-    	title.setLayoutY(191.0);
-    	
-     	sepPane.setVisible(false);
-    	sepPane1.setVisible(false);
+
+	@FXML
+	void registerVehicle(ActionEvent event) {
+		
+		p1.setVisible(true);
+		p2.setVisible(true);
+		p3.setVisible(true);
+		p4.setVisible(true);
+		p5.setVisible(true);
+		p6.setVisible(true);
+		
+		ivLb1.setVisible(true);
+		ivLb2.setVisible(true);
+		ivLb3.setVisible(true);
+		ivLb4.setVisible(true);
+		ivLb5.setVisible(true);
+		ivLb6.setVisible(true);
+		
+		type.setVisible(true);
+		
+		enterVehicleButton.setVisible(false);
+		removeVehicleButton.setVisible(false);
+		
+		cancelButton.setVisible(true);
+		confirmButton.setVisible(true);
+		//logic.AddVehicle(Calendar.getInstance());
+	}
+
+	@FXML
+	void exit(ActionEvent event) {
+
+		userLb.setVisible(true);
+		userComboBox.setVisible(true);
+		enterButton.setVisible(true);
+		title.setLayoutY(191.0);
+
+		sepPane.setVisible(false);
+		sepPane1.setVisible(false);
 		sepPane11.setVisible(false);
 		sepPane111.setVisible(false);
 		sepPane1111.setVisible(false);
@@ -415,9 +523,60 @@ public class MainController {
 		exitButton.setVisible(false);
 		currentUserLb.setVisible(false);
 		timeLb.setVisible(false);
-    	
+
 		enterVehicleButton.setVisible(false);
 		removeVehicleButton.setVisible(false);
+		
+		p1.setVisible(false);
+		p2.setVisible(false);
+		p3.setVisible(false);
+		p4.setVisible(false);
+		p5.setVisible(false);
+		p6.setVisible(false);
+		
+		ivLb1.setVisible(false);
+		ivLb2.setVisible(false);
+		ivLb3.setVisible(false);
+		ivLb4.setVisible(false);
+		ivLb5.setVisible(false);
+		ivLb6.setVisible(false);
+		
+		type.setVisible(false);
+		
+		sepPane4.setVisible(false);
+		sepPane2.setVisible(false);
+		sepPane3.setVisible(false);
+		
+		enterVehicleButton.setVisible(false);
+		removeVehicleButton.setVisible(false);
+		
+		cancelButton.setVisible(false);
+		confirmButton.setVisible(false);
 
+	}
+	
+	@FXML
+    void cancel(ActionEvent event) {
+		p1.setVisible(false);
+		p2.setVisible(false);
+		p3.setVisible(false);
+		p4.setVisible(false);
+		p5.setVisible(false);
+		p6.setVisible(false);
+		
+		ivLb1.setVisible(false);
+		ivLb2.setVisible(false);
+		ivLb3.setVisible(false);
+		ivLb4.setVisible(false);
+		ivLb5.setVisible(false);
+		ivLb6.setVisible(false);
+		
+		type.setVisible(false);
+		
+		enterVehicleButton.setVisible(true);
+		removeVehicleButton.setVisible(true);
+		
+		cancelButton.setVisible(false);
+		confirmButton.setVisible(false);
     }
 }
