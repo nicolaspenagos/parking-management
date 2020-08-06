@@ -51,13 +51,22 @@ public class Logic implements Serializable{
 		
 	}
 	
-	public void AddVehicle(Calendar date) {
+	public void addRegister(Calendar date, String plate, String rName, String type) {
 		
-		
-		//Register current = new Register(idCounter);
-		//registers.add(new Register)
-		
+		Register current = new Register(idCounter, plate, date, searchUser(rName), getType(type));
+		registers.add(current);
 		idCounter++;
+		
+	}
+	
+	public char getType(String type) {
+		
+		if(type.equals("TURBO"))
+			return Register.TURBO;
+		if(type.equals("MULA"))
+			return Register.MULA;
+		return Register.AUTOMOVIL;
+		
 	}
 	
 

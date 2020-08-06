@@ -143,7 +143,7 @@
       </Button>
       <Pane fx:id="sepPane3" layoutX="779.0" layoutY="303.0" prefHeight="382.0" prefWidth="5.0" style="-fx-background-color: WHITE;" />
       <Pane fx:id="sepPane2" layoutX="156.0" layoutY="300.0" prefHeight="382.0" prefWidth="5.0" style="-fx-background-color: WHITE;" />
-      <Label fx:id="currentUserLb" layoutX="367.0" layoutY="267.0" text="NICOLAS PENAGOS MONTOYA" textFill="#0c1f57">
+      <Label fx:id="currentUserLb" layoutX="345.0" layoutY="267.0" text="NICOLAS PENAGOS MONTOYA" textFill="#0c1f57">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>

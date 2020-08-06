@@ -29,6 +29,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import model.Logic;
+import model.Register;
 import model.User;
 import threads.GUIUpdateControllThread;
 import threads.TimeThread;
@@ -214,6 +215,10 @@ public class MainController {
 	private Logic logic;
 	private AlertBoxAddUser addUserWindow;
 	private String date;
+	private String currentPlate;
+	private Calendar currentDate;
+	private String currentResponsable;
+	private String currentType;
 
 	@FXML
 	public void initialize() {
@@ -785,23 +790,25 @@ public class MainController {
 
 			type.setVisible(false);
 
-			String plate = p1.getText() + p2.getText() + p3.getText() + "-" + p4.getText() + p5.getText()
+			currentPlate = p1.getText() + p2.getText() + p3.getText() + "-" + p4.getText() + p5.getText()
 					+ p6.getText();
-			String responsable = logic.getCurrentUser().getName();
-			String sType = type.getValue();
+			currentResponsable = logic.getCurrentUser().getName();
+			currentType = type.getValue();
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-			Calendar cal = Calendar.getInstance();
-			String sDate = dateFormat.format(cal.getTime());
+			currentDate = Calendar.getInstance();
+			String sDate = dateFormat.format(currentDate.getTime());
 
 			ivLb1.setText("Por favor verifique que los datos ingresados son correctos:");
 			ivLb1.setVisible(true);
 
+		
+			
 			setConfirmationVehicleVisible(true);;
 		
-			avR.setText(responsable);
+			avR.setText(currentResponsable);
 			avH.setText(sDate);
-			avT.setText(sType);
-			avP.setText(plate);
+			avT.setText(currentType);
+			avP.setText(currentPlate);
 
 		
 
@@ -814,7 +821,18 @@ public class MainController {
 
 	@FXML
 	void okAdd(ActionEvent event) {
-
+		
+		setConfirmationVehicleVisible(false);
+		ivLb1.setVisible(false);
+		cancelButton1.setVisible(false);
+		confirmButton1.setVisible(false);
+		cancelButton.setVisible(false);
+		confirmButton.setVisible(false);
+		enterVehicleButton.setVisible(true);
+		removeVehicleButton.setVisible(true);
+		
+		logic.addRegister(currentDate, currentPlate, currentResponsable, currentType);
+		
 	}
 
 	@FXML
