@@ -6,6 +6,8 @@
 package model;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -34,6 +36,7 @@ public class Logic implements Serializable{
 	public Logic(String adminName, String password) {
 	
 		admin = new User(adminName + " ADMIN");
+		currentUser = admin;
 		this.password = password;
 		workers = new ArrayList<User>();
 		registers = new ArrayList<Register>();
@@ -57,6 +60,7 @@ public class Logic implements Serializable{
 		registers.add(current);
 		idCounter++;
 		
+	
 	}
 	
 	public char getType(String type) {
@@ -92,6 +96,11 @@ public class Logic implements Serializable{
 	// -------------------------------------
 	// Getters and Setters
 	// -------------------------------------
+
+	public ArrayList<Register> getRegisters(){
+		System.out.println(registers.size());
+		return registers;
+	}
 	public User getAdmin() {
 		return admin;
 	}

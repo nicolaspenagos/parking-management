@@ -16,6 +16,7 @@ import java.util.List;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,10 +25,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.util.Callback;
 import model.Logic;
 import model.Register;
 import model.User;
@@ -212,6 +219,34 @@ public class MainController {
 	@FXML
 	private Button confirmButton1;
 
+	@FXML
+	private TableView<Register> tableViewReport;
+	
+
+    @FXML
+    private TableColumn<Register, Integer> idTV;
+
+    @FXML
+    private TableColumn<Register, String> plateTV;
+
+    @FXML
+    private TableColumn<Register, String> enterTV;
+
+    @FXML
+    private TableColumn<Register, String> exitTV;
+
+    @FXML
+    private TableColumn<Register, String> typeTV;
+
+    @FXML
+    private TableColumn<Register, String> rEnTV;
+
+    @FXML
+    private TableColumn<Register, String> rExTV;
+
+    @FXML
+    private TableColumn<Register, Integer> chargeTV;
+
 	private Logic logic;
 	private AlertBoxAddUser addUserWindow;
 	private String date;
@@ -222,6 +257,24 @@ public class MainController {
 
 	@FXML
 	public void initialize() {
+		
+		idTV.setCellValueFactory(new PropertyValueFactory<>("id"));
+		plateTV.setCellValueFactory(new PropertyValueFactory<>("plate"));
+		enterTV.setCellValueFactory(new PropertyValueFactory<>("a"));
+		exitTV.setCellValueFactory(new PropertyValueFactory<>("dFExitDate"));
+		rEnTV.setCellValueFactory(new PropertyValueFactory<>("reponsableAtEnter"));
+		rExTV.setCellValueFactory(new PropertyValueFactory<>("responsableAtExit"));
+		typeTV.setCellValueFactory(new PropertyValueFactory<>("type"));
+		chargeTV.setCellValueFactory(new PropertyValueFactory<>("charge"));
+		
+		idTV.setStyle( "-fx-alignment: CENTER;");
+		plateTV.setStyle( "-fx-alignment: CENTER;");
+		enterTV.setStyle( "-fx-alignment: CENTER;");
+		exitTV.setStyle( "-fx-alignment: CENTER;");
+		rEnTV.setStyle( "-fx-alignment: CENTER;");
+		rExTV.setStyle( "-fx-alignment: CENTER;");
+		typeTV.setStyle( "-fx-alignment: CENTER;");
+		chargeTV.setStyle( "-fx-alignment: CENTER;");
 
 		currentUserLb.setVisible(false);
 		errorLb.setVisible(false);
@@ -235,6 +288,8 @@ public class MainController {
 		reportButton.setGraphic(new ImageView(new Image("/images/report.png")));
 		enterVehicleButton.setGraphic(new ImageView(new Image("/images/enterV.png")));
 		removeVehicleButton.setGraphic(new ImageView(new Image("/images/exitV-01.png")));
+
+		tableViewReport.setVisible(false);
 
 		addVehicleErrorLabel.setVisible(false);
 		cancelButton1.setVisible(false);
@@ -646,39 +701,26 @@ public class MainController {
 	void registerVehicle(ActionEvent event) {
 
 		/*
-		p1.setVisible(true);
-		p2.setVisible(true);
-		p3.setVisible(true);
-		p4.setVisible(true);
-		p5.setVisible(true);
-		p6.setVisible(true);
+		 * p1.setVisible(true); p2.setVisible(true); p3.setVisible(true);
+		 * p4.setVisible(true); p5.setVisible(true); p6.setVisible(true);
+		 * 
+		 * p1.setText(""); p2.setText(""); p3.setText(""); p4.setText("");
+		 * p5.setText(""); p6.setText("");
+		 * 
+		 * type.setValue("");
+		 * 
+		 * ivLb1.setVisible(true); ivLb3.setVisible(true); ivLb4.setVisible(true);
+		 * ivLb5.setVisible(true); ivLb6.setVisible(true);
+		 * 
+		 * type.setVisible(true);
+		 * 
+		 * enterVehicleButton.setVisible(false); removeVehicleButton.setVisible(false);
+		 * 
+		 * cancelButton.setVisible(true); confirmButton.setVisible(true); //
+		 * logic.AddVehicle(Calendar.getInstance());
+		 */
 
-		p1.setText("");
-		p2.setText("");
-		p3.setText("");
-		p4.setText("");
-		p5.setText("");
-		p6.setText("");
-
-		type.setValue("");
-
-		ivLb1.setVisible(true);
-		ivLb3.setVisible(true);
-		ivLb4.setVisible(true);
-		ivLb5.setVisible(true);
-		ivLb6.setVisible(true);
-
-		type.setVisible(true);
-
-		enterVehicleButton.setVisible(false);
-		removeVehicleButton.setVisible(false);
-
-		cancelButton.setVisible(true);
-		confirmButton.setVisible(true);
-		// logic.AddVehicle(Calendar.getInstance());
-		 * */
-		
-		 setVisibleRegisterVehicle(true);
+		setVisibleRegisterVehicle(true);
 	}
 
 	@FXML
@@ -801,16 +843,13 @@ public class MainController {
 			ivLb1.setText("Por favor verifique que los datos ingresados son correctos:");
 			ivLb1.setVisible(true);
 
-		
-			
-			setConfirmationVehicleVisible(true);;
-		
+			setConfirmationVehicleVisible(true);
+			;
+
 			avR.setText(currentResponsable);
 			avH.setText(sDate);
 			avT.setText(currentType);
 			avP.setText(currentPlate);
-
-		
 
 		} else {
 
@@ -821,7 +860,7 @@ public class MainController {
 
 	@FXML
 	void okAdd(ActionEvent event) {
-		
+
 		setConfirmationVehicleVisible(false);
 		ivLb1.setVisible(false);
 		cancelButton1.setVisible(false);
@@ -830,9 +869,16 @@ public class MainController {
 		confirmButton.setVisible(false);
 		enterVehicleButton.setVisible(true);
 		removeVehicleButton.setVisible(true);
-		
+
 		logic.addRegister(currentDate, currentPlate, currentResponsable, currentType);
+
+		currentDate = null;
+		currentPlate = null;
+		currentResponsable = null;
+		currentType = null;
 		
+		saveData();
+
 	}
 
 	@FXML
@@ -840,9 +886,9 @@ public class MainController {
 		setVisibleRegisterVehicle(true);
 		setConfirmationVehicleVisible(false);
 	}
-	
+
 	public void setVisibleRegisterVehicle(boolean val) {
-		
+
 		p1.setVisible(val);
 		p2.setVisible(val);
 		p3.setVisible(val);
@@ -872,16 +918,15 @@ public class MainController {
 
 		cancelButton.setVisible(val);
 		confirmButton.setVisible(val);
-		
+
 		enterVehicleButton.setVisible(!val);
 		removeVehicleButton.setVisible(!val);
-		
+
 		ivLb1.setText("Por favor registre los siguientes datos para ingresar un vehículo:");
 		ivLb1.setVisible(val);
 
-		
 	}
-	
+
 	public void setConfirmationVehicleVisible(boolean val) {
 
 		ivLb1.setText("Por favor verifique que los datos ingresados son correctos:");
@@ -896,12 +941,38 @@ public class MainController {
 		avP.setVisible(val);
 		avR.setVisible(val);
 		avT.setVisible(val);
-		
+
 		cancelButton1.setVisible(val);
 		cancelButton.setVisible(!val);
-		
+
 		confirmButton.setVisible(!val);
 		confirmButton1.setVisible(val);
 	}
 
+	@FXML
+	void showReport(ActionEvent event) {
+		
+		ObservableList<Register> oList = FXCollections.observableArrayList(logic.getRegisters());
+		
+		
+		tableViewReport.setItems(oList);
+		
+		if(tableViewReport.isVisible()) {
+			
+			
+			
+			
+			tableViewReport.setVisible(false);
+			reportButton.setGraphic(new ImageView(new Image("/images/report.png")));
+			
+		}else {
+			
+			tableViewReport.setVisible(true);
+			reportButton.setGraphic(new ImageView(new Image("/images/goBackReport-01-01.png")));
+			
+				
+			
+			
+		}
+	}
 }

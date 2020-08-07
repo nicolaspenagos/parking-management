@@ -1,8 +1,16 @@
 package model;
 
+import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Register {
+public class Register implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	public final static char TURBO = 'T';
 	public final static char MULA = 'M';
@@ -11,21 +19,30 @@ public class Register {
 	private int id;
 	private String plate;
 	private Calendar enterDate;
+	private String a;
+	private String dFExitDate;
 	private Calendar exitDate;
-	private User responsableAtExit;
-	private User reponsableAtEnter;
+	private String responsableAtExit;
+	private User userAtExit;
+	private String reponsableAtEnter;
+	private User userAtEnter;
 	private int charge;
 	private char type;
 
 
 	
-	public Register(int id, String plate, Calendar enterDate, User responsableAtEnter, char type) {
+	public Register(int id, String plate, Calendar enterDate, User userAtEnter, char type) {
 		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		
+		this.a = dateFormat.format(enterDate.getTime());
 		this.id=id;
 		this.plate=plate;
 		this.enterDate = enterDate;
-		this.reponsableAtEnter=responsableAtEnter;
+		this.setUserAtEnter(userAtEnter);
+		this.setReponsableAtEnter(userAtEnter.getName());
 		this.type = type;
+		this.dFExitDate = "";
 		
 	}
 	
@@ -57,18 +74,10 @@ public class Register {
 	public void setExitDate(Calendar exitDate) {
 		this.exitDate = exitDate;
 	}
-	public User getResponsableAtExit() {
+	public String getResponsableAtExit() {
 		return responsableAtExit;
 	}
-	public void setResponsableAtExit(User responsableAtExit) {
-		this.responsableAtExit = responsableAtExit;
-	}
-	public User getReponsableAtEnter() {
-		return reponsableAtEnter;
-	}
-	public void setReponsableAtEnter(User reponsableAtEnter) {
-		this.reponsableAtEnter = reponsableAtEnter;
-	}
+
 	public int getCharge() {
 		return charge;
 	}
@@ -90,6 +99,89 @@ public class Register {
 
 	public void setType(char type) {
 		this.type = type;
+	}
+
+
+
+
+
+
+
+
+	public String getdFExitDate() {
+		return dFExitDate;
+	}
+
+
+
+
+
+	public void setdFExitDate(String dFExitDate) {
+		this.dFExitDate = dFExitDate;
+	}
+
+
+
+
+
+	public User getUserAtExit() {
+		return userAtExit;
+	}
+
+
+
+
+
+	public void setUserAtExit(User userAtExit) {
+		this.userAtExit = userAtExit;
+	}
+
+
+
+
+
+	public String getReponsableAtEnter() {
+		return reponsableAtEnter;
+	}
+
+
+
+
+
+	public void setReponsableAtEnter(String reponsableAtEnter) {
+		this.reponsableAtEnter = reponsableAtEnter;
+	}
+
+
+
+
+
+	public User getUserAtEnter() {
+		return userAtEnter;
+	}
+
+
+
+
+
+	public void setUserAtEnter(User userAtEnter) {
+		this.userAtEnter = userAtEnter;
+	}
+
+
+
+
+
+	public String getA() {
+		return a;
+	}
+
+
+
+
+
+	public void setA(String a) {
+		this.a = a;
 	}
 	
 	
